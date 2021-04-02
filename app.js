@@ -1,3 +1,8 @@
+const webcamElement = document.getElementById('webcam');
+const canvasElement = document.getElementById('canvas');
+const snapSoundElement = document.getElementById('snapSound');
+const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+
 export default class Webcam {
     constructor(webcamElement, facingMode = 'environment', canvasElement = null, snapSoundElement = null) {
       this._webcamElement = webcamElement;
