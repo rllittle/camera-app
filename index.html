@@ -3,6 +3,11 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    const webcamElement = document.getElementById('webcam');
+    const canvasElement = document.getElementById('canvas');
+    const snapSoundElement = document.getElementById('snapSound');
+    const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
+    
     <!-- Name of your awesome camera app -->
     <title>Camera App</title>
     <!-- Link to your main style sheet-->
@@ -14,11 +19,7 @@
         <video id="webcam" autoplay playsinline width="640" height="480"></video>
         <canvas id="canvas" class="d-none"></canvas>
         <audio id="snapSound" src="audio/snap.wav" preload = "auto"></audio>
-        const webcamElement = document.getElementById('webcam');
-        const canvasElement = document.getElementById('canvas');
-        const snapSoundElement = document.getElementById('snapSound');
-        const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement);
-        
+       
         webcam.start()
             .then(result =>{
                 console.log("webcam started");
