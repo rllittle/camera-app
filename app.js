@@ -1,5 +1,5 @@
 export default class Webcam {
-    constructor(webcamElement, facingMode = 'user', canvasElement = null, snapSoundElement = null) {
+    constructor(webcamElement, facingMode = 'element', canvasElement = null, snapSoundElement = null) {
       this._webcamElement = webcamElement;
       this._webcamElement.width = this._webcamElement.width || 640;
       this._webcamElement.height = this._webcamElement.height || this._webcamElement.width * (3 / 4);
