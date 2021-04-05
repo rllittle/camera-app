@@ -7,11 +7,12 @@
     return;
   }
 
-  // page elements
+  // get page elements
   const video = document.querySelector("#video");
   const btnPlay = document.querySelector("#btnPlay");
   const btnPause = document.querySelector("#btnPause");
   const btnScreenshot = document.querySelector("#btnScreenshot");
+  const btnChangeCamera = document.querySelector("#btnChangeCamera");
   const screenshotsContainer = document.querySelector("#screenshots");
   const canvas = document.querySelector("#canvas");
   const devicesSelect = document.querySelector("#devicesSelect");
@@ -31,6 +32,9 @@
       },
     },
   };
+
+  // use rear facing camera
+  let useFrontCamera = false;
 
   // current video stream
   let videoStream;
@@ -60,6 +64,10 @@
     screenshotsContainer.prepend(img);
   });
 
+  // switch camera
+  btnChangeCamera.addEventListener("click", function () {
+    useFrontCamera = !useFrontCamera;
+
     initializeCamera();
   });
 
@@ -75,7 +83,7 @@
   // initialize
   async function initializeCamera() {
     stopVideoStream();
-    constraints.video.facingMode = "environment";
+    constraints.video.facingMode = useFrontCamera ? "user" : "environment";
 
     try {
       videoStream = await navigator.mediaDevices.getUserMedia(constraints);
