@@ -33,8 +33,8 @@
     },
   };
 
-  // use front face camera
-  let useFrontCamera = true;
+  // use rear camera
+  let useRearCamera = true;
 
   // current video stream
   let videoStream;
@@ -66,7 +66,7 @@
 
   // switch camera
   btnChangeCamera.addEventListener("click", function () {
-    useFrontCamera = !useFrontCamera;
+    useRearCamera = !useRearCamera;
 
     initializeCamera();
   });
@@ -83,7 +83,7 @@
   // initialize
   async function initializeCamera() {
     stopVideoStream();
-    constraints.video.facingMode = useFrontCamera ? "user" : "environment";
+    constraints.video.facingMode = useRearCamera ? "environment" : "user";
 
     try {
       videoStream = await navigator.mediaDevices.getUserMedia(constraints);
