@@ -1,40 +1,58 @@
-<html lang=”en”>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Name of your awesome camera app -->
-    <title>Camera App</title>
-    <!-- Link to your main style sheet-->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Camera</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
+
 <body>
-    <!-- Camera -->
-    <main id="camera">
-        <video id="webcam" autoplay playsinline width="640" height="480"></video>
-        <canvas id="canvas" class="d-none"></canvas>
-        <audio id="snapSound" src="audio/snap.wav" preload = "auto"></audio>
-       
-        webcam.start()
-            .then(result =>{
-                console.log("webcam started");
-            })
-            .catch(err => {
-                console.log(err);
-            });
-        
-        let picture = webcam.snap();
-        document.querySelector('#download-photo').href = picture;
-        
-        <!-- stop webcam with webcam.stop() -->
-        
-        $('#cameraFlip').click(function() {
-            webcam.flip();
-            webcam.start();  
-        });
-        
-        
-    </main>
-    <script src="app.js"></script>
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-four-fifths">
+          <h1 class="title">
+            JavaScript Camera
+          </h1>
+          <video autoplay id="video"></video>
+          <button class="button is-hidden" id="btnPlay">
+            <span class="icon is-small">
+              <i class="fas fa-play"></i>
+            </span>
+          </button>
+          <button class="button" id="btnPause">
+            <span class="icon is-small">
+              <i class="fas fa-pause"></i>
+            </span>
+          </button>
+          <button class="button is-success" id="btnScreenshot">
+            <span class="icon is-small">
+              <i class="fas fa-camera"></i>
+            </span>
+          </button>
+        </div>
+        <div class="column">
+          <h2 class="title">Screenshots</h2>
+          <div id="screenshots"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        By RLLittle | <a
+          href="https://github.com/rllittle/camera-app">Source code</a>
+      </p>
+    </div>
+  </footer>
+
+  <canvas class="is-hidden" id="canvas"></canvas>
+  <script src="script.js"></script>
 </body>
+
 </html>
