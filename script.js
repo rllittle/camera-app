@@ -83,7 +83,7 @@
   // initialize
   async function initializeCamera() {
     stopVideoStream();
-    constraints.video.facingMode = useRearCamera ? "user" : "environment";
+    constraints.video.facingMode = useRearCamera ? "environment" : "user";
 
     try {
       videoStream = await navigator.mediaDevices.getUserMedia(constraints);
